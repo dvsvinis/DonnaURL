@@ -3,6 +3,7 @@
 //http://zipcode.rocks:8085/ids
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONObject;
 
@@ -21,6 +22,7 @@ public class Main {
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
+        //GET REQUEST
         int responseCode = con.getResponseCode();
 //        System.out.println("Sending GET Request: " + url);
 //        System.out.println("Response code " + responseCode);
@@ -34,8 +36,9 @@ public class Main {
 
 //        System.out.println(response.toString());
         ObjectMapper mapper = new ObjectMapper();
-        List<Id> idList = mapper.readValue(response.toString(), new TypeReference<List<Id>>(){});
-        for (Id each:idList){
+        List<Id> idList = mapper.readValue(response.toString(), new TypeReference<List<Id>>() {
+        });
+        for (Id each : idList) {
             System.out.println(each.toString());
         }
 
